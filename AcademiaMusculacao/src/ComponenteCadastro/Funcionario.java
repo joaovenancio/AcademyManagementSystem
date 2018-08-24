@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package academiamusculacao.model;
+package ComponenteCadastro;
 
 /**
  *
@@ -14,12 +14,14 @@ public class Funcionario extends UsuarioAcademia {
     protected TipoFuncionario tipo;
     
     //Construtor:
-    public Funcionario () {
-        
+    public Funcionario(String cpf, String rg, int ano, int mes, int dia, String telefone, String endereco, TipoFuncionario tipo) {
+        super(cpf, rg, ano, mes, dia, telefone, endereco);
+        this.tipo = tipo;
     }
     
-    
     //Metodos:
+
+   
     
     
 }

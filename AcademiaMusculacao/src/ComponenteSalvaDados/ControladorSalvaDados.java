@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.HashMap;
 
 /**
  *
@@ -24,7 +25,7 @@ public class ControladorSalvaDados implements ISalvaDados {
     /**
      * Instancia o controlador para salvar os dados.
      */
-    public ControladorSalvaDados () {
+    private ControladorSalvaDados () {
         this.instancia = this;
     }
     
@@ -78,7 +79,7 @@ public class ControladorSalvaDados implements ISalvaDados {
      * @param nomeDoArquivo - Nome do Arquivo para ser carregado o objeto.
      */
     @Override
-    public void carregar(Object dadoCarregar, String nomeDoArquivo) {
+    public void carregar (Object dadoCarregar, String nomeDoArquivo) {
         try {
             //Criar um objeto para passar como referencia o nome do Arquivo desejado
             FileInputStream caminhoArquivo = new FileInputStream(nomeDoArquivo);
@@ -86,7 +87,7 @@ public class ControladorSalvaDados implements ISalvaDados {
             ObjectInputStream fluxoEntradaObjeto = new ObjectInputStream(caminhoArquivo);
             
             //Recuperar o Objeto:
-            dadoCarregar = fluxoEntradaObjeto.readObject();
+            dadoCarregar =  fluxoEntradaObjeto.readObject();
             
             //Fehcar o canal de recebimento e liberar o arquivo:
             fluxoEntradaObjeto.close();

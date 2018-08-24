@@ -9,6 +9,6 @@ package academiamusculacao.model;
  *
  * @author joaov
  */
-class Treino {
+public class Treino {
     
 }

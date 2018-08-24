@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package academiamusculacao.model;
+package ComponenteCadastro;
 
 import java.util.Calendar;
 
@@ -13,14 +13,14 @@ import java.util.Calendar;
  */
 public abstract class UsuarioAcademia {
     //Atributos:
-    protected long cpf;
+    protected String cpf;
     protected String rg;
     protected Calendar dataNascimento;
     protected String telefone;
     protected String endereco;
     
     //Construtor:
-    public UsuarioAcademia(long cpf, String rg,int ano, int mes, int dia, String telefone, String endereco) {
+    public UsuarioAcademia(String cpf, String rg,int ano, int mes, int dia, String telefone, String endereco) {
         this.cpf = cpf;
         this.rg = rg;
         this.dataNascimento = Calendar.getInstance();
@@ -31,11 +31,11 @@ public abstract class UsuarioAcademia {
     }
     
     //Metodos:
-    public long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 

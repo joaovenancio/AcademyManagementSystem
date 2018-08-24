@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package academiamusculacao.model;
+package ComponenteCadastro;
 
+import academiamusculacao.model.Treino;
 import java.util.ArrayList;
 
 /**
@@ -17,6 +18,18 @@ public class Aluno extends UsuarioAcademia {
     
     
     //Construtor:
+    public Aluno(String cpf, String rg, int ano, int mes, int dia, String telefone, String endereco) {
+        super(cpf, rg, ano, mes, dia, telefone, endereco);
+        this.treino = new ArrayList<Treino>();
+    }
     
     //Metodos:
+    public ArrayList<Treino> getTreino() {
+        return treino;
+    }
+
+    public void setTreino(ArrayList<Treino> treino) {
+        this.treino = treino;
+    }
+    
 }

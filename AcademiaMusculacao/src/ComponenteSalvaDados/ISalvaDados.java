@@ -5,6 +5,8 @@
  */
 package ComponenteSalvaDados;
 
+import java.util.HashMap;
+
 /**
  *
  * @author joaov
@@ -14,4 +16,5 @@ public interface ISalvaDados {
     public boolean persistir (Object dado, String nomeDoArquivo);
     
     public void carregar (Object dadoCarregar, String nomeDoArquivo);
+    
 }
