@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ComponenteSalvaDados;
+package academiamusculacao.model;
 
 /**
  *
  * @author joaov
  */
-public interface ISalvaDados {
-    //Metodos:
-    public boolean persistir (Object dado, String nomeDoArquivo);
+class Treino {
     
-    public void carregar (Object dadoCarregar, String nomeDoArquivo);
 }

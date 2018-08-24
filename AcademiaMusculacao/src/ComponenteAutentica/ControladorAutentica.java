@@ -5,7 +5,7 @@
  */
 package ComponenteAutentica;
 
-import SalvaDados.controller.ISalvaDados;
+import ComponenteSalvaDados.ISalvaDados;
 
 /**
  *

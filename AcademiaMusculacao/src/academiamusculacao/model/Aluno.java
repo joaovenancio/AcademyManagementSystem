@@ -3,15 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ComponenteSalvaDados;
+package academiamusculacao.model;
+
+import java.util.ArrayList;
 
 /**
  *
  * @author joaov
  */
-public interface ISalvaDados {
-    //Metodos:
-    public boolean persistir (Object dado, String nomeDoArquivo);
+public class Aluno extends UsuarioAcademia {
+    //Atributos:
+    protected ArrayList<Treino> treino;
     
-    public void carregar (Object dadoCarregar, String nomeDoArquivo);
+    
+    //Construtor:
+    
+    //Metodos:
 }

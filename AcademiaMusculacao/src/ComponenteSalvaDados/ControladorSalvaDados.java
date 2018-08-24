@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package SalvaDados.controller;
+package ComponenteSalvaDados;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -20,6 +20,7 @@ public class ControladorSalvaDados implements ISalvaDados {
     //Atributos
     
     //Construtor
+    
     
     //Metodos
     @Override
