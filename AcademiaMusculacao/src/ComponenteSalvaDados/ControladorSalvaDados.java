@@ -17,12 +17,25 @@ import java.io.ObjectOutputStream;
  * @author joaov
  */
 public class ControladorSalvaDados implements ISalvaDados {
-    //Atributos
+    //Atributos:
+    private static ControladorSalvaDados instancia;
     
     //Construtor
-    
+    /**
+     * Instancia o controlador para salvar os dados.
+     */
+    public ControladorSalvaDados () {
+        this.instancia = this;
+    }
     
     //Metodos
+    /**
+     * Recebe um dado e um nome de arquivo. Salva o Objeto dado em um arquivo com esse nome.
+     * 
+     * @param dado - Objeto que vai ser armazenado.
+     * @param nomeDoArquivo - String com o nome do arquivo para guardar os Objetos.
+     * @return true se conseguir gravar o dado no arquivo desejado || false se deu erro na gravacao.
+     */
     @Override
     public boolean persistir(Object dado, String nomeDoArquivo) {
         try {
@@ -58,6 +71,12 @@ public class ControladorSalvaDados implements ISalvaDados {
         
     }
 
+    /**
+     * Carrega um objeto por um arquivo atraves da serializacao.
+     * 
+     * @param dadoCarregar - Referencia do objeto que vai ser carregado.
+     * @param nomeDoArquivo - Nome do Arquivo para ser carregado o objeto.
+     */
     @Override
     public void carregar(Object dadoCarregar, String nomeDoArquivo) {
         try {
@@ -87,4 +106,18 @@ public class ControladorSalvaDados implements ISalvaDados {
         
     }
     
+    
+    /**
+     * Retorna uma instancia dessa classe.
+     * 
+     * @return ControladorSalvaDados.
+     */
+    public static ControladorSalvaDados getInstance() {
+        if (ControladorSalvaDados.instancia == null) {
+            ControladorSalvaDados.instancia = new ControladorSalvaDados();
+        }
+        
+        return ControladorSalvaDados.instancia;
+        
+    }  
 }
