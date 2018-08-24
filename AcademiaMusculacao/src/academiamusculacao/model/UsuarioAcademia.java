@@ -19,6 +19,17 @@ public abstract class UsuarioAcademia {
     protected String telefone;
     protected String endereco;
     
+    //Construtor:
+    public UsuarioAcademia(long cpf, String rg,int ano, int mes, int dia, String telefone, String endereco) {
+        this.cpf = cpf;
+        this.rg = rg;
+        this.dataNascimento = Calendar.getInstance();
+        dataNascimento.clear();
+        this.dataNascimento.set(ano, mes, dia);
+        this.telefone = telefone;
+        this.endereco = endereco;
+    }
+    
     //Metodos:
     public long getCpf() {
         return cpf;
@@ -51,5 +62,16 @@ public abstract class UsuarioAcademia {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
+
+    public Calendar getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(int ano, int mes, int dia) {
+        this.dataNascimento.clear();
+        this.dataNascimento.set(ano, mes, dia);
+    }
+    
+    
     
 }
