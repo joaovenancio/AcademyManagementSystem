@@ -5,6 +5,8 @@
  */
 package ComponenteCadastro;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author joaov
@@ -58,7 +60,6 @@ public class TelaAluno extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(650, 400));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Informações Básicas"));
 
@@ -254,7 +255,30 @@ public class TelaAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        String cpf = this.jTextField1.getText();
+        String rg = this.jTextField2.getText();
+        String telefone = this.jTextField3.getText();
+        String endereco = this.jTextField4.getText();
+        int dia = Integer.parseInt(this.jTextField5.getText());
+        int mes = Integer.parseInt(this.jTextField6.getText());
+        int ano = Integer.parseInt(this.jTextField7.getText());
+        
+        if (this.controlador.cadastraAluno(new EnvelopeAluno(cpf,rg,ano,mes,dia,telefone,endereco))) {
+            
+            JOptionPane.showConfirmDialog(this,"Aluno cadastrado com sucesso!");
+            
+            this.jTextField1.setText("");
+            this.jTextField2.setText("");
+            this.jTextField3.setText("");
+            this.jTextField4.setText("");
+            this.jTextField5.setText("");
+            this.jTextField6.setText("");
+            this.jTextField7.setText("");
+            
+        } else {
+            JOptionPane.showConfirmDialog(this,"Houve um erro ao cadastrar o Aluno. Por favor, entre em contato com o Administrador do seu Sistema.");
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

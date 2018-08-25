@@ -13,13 +13,11 @@ import java.util.HashMap;
  */
 class ControladorAluno {
     //Atributos:
-    private String nomeArquivoAluno;
     private ControladorComponenteCadastro controladorComponente;
     private TelaAluno telaCadastrarAluno;
     
     //Construtor:
     public ControladorAluno(ControladorComponenteCadastro controladorCentral) {
-        this.nomeArquivoAluno = this.controladorComponente.getNomeArquivoDadosAlunos();
         this.controladorComponente = controladorCentral;
         this.telaCadastrarAluno = new TelaAluno (this);
     }
@@ -37,12 +35,21 @@ class ControladorAluno {
         HashMap<String, Object> alunos = new HashMap();
         
         //Carrega os dados do sistema:
-        this.controladorComponente.getObjetoDePersistencia().carregar(alunos, this.nomeArquivoAluno);
+        this.controladorComponente.getObjetoDePersistencia().carregar(alunos, this.carregarNomeArquivo());
         //Cria o novo aluno:
         Aluno novoAluno = new Aluno(dadosAluno.cpf, dadosAluno.rg, dadosAluno.ano, dadosAluno.mes, dadosAluno.dia, dadosAluno.telefone, dadosAluno.endereco);
         alunos.put(novoAluno.getCpf(), novoAluno);
         //Persiste os dados:
-        return this.controladorComponente.getObjetoDePersistencia().persistir(alunos, this.nomeArquivoAluno);
+        return this.controladorComponente.getObjetoDePersistencia().persistir(alunos, this.carregarNomeArquivo());
+    }
+    
+    /**
+     * Metodo que recupera a String contendo o nome do arquivo para salvar e recuperar os dados dos alunos.
+     * 
+     * @return String - Contendo o nome do arquivo para ser usado para a persistencia de dados.
+     */
+    private String carregarNomeArquivo () {
+        return this.controladorComponente.getNomeArquivoDadosAlunos();
     }
     
     /**

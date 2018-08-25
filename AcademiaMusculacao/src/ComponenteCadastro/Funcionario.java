@@ -20,8 +20,12 @@ public class Funcionario extends UsuarioAcademia {
     }
     
     //Metodos:
+    public TipoFuncionario getTipo() {
+        return tipo;
+    }
 
-   
-    
+    public void setTipo(TipoFuncionario tipo) {
+        this.tipo = tipo;
+    } 
     
 }

@@ -5,25 +5,27 @@
  */
 package ComponenteCadastro;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author joaov
  */
-public class TelaAluno extends javax.swing.JFrame {
+public class TelaFuncionario extends javax.swing.JFrame {
     //Atributos:
-    ControladorAluno controlador;
+    ControladorFuncionario controlador;
     
     //Construtor:
     /**
      * Creates new form TelaAluno
      */
-    public TelaAluno(ControladorAluno controlador) {
+    public TelaFuncionario(ControladorFuncionario controlador) {
         this.controlador = controlador;
         initComponents();
         this.setVisible(false); //Comecar ele sem estar visivel
     }
 
-    private TelaAluno() {
+    private TelaFuncionario() {
         initComponents();
     }
 
@@ -58,7 +60,6 @@ public class TelaAluno extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(650, 400));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Informações Básicas"));
 
@@ -123,7 +124,7 @@ public class TelaAluno extends javax.swing.JFrame {
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel1.setText("Cadastrar um Aluno");
+        jLabel1.setText("Cadastrar um Funcionário");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Data de Nascimento"));
 
@@ -202,10 +203,6 @@ public class TelaAluno extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -218,6 +215,10 @@ public class TelaAluno extends javax.swing.JFrame {
                 .addGap(98, 98, 98)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(113, 113, 113))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2});
@@ -225,9 +226,9 @@ public class TelaAluno extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel1)
-                .addGap(36, 36, 36)
+                .addGap(35, 35, 35)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -254,7 +255,30 @@ public class TelaAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        String cpf = this.jTextField1.getText();
+        String rg = this.jTextField2.getText();
+        String telefone = this.jTextField3.getText();
+        String endereco = this.jTextField4.getText();
+        int dia = Integer.parseInt(this.jTextField5.getText());
+        int mes = Integer.parseInt(this.jTextField6.getText());
+        int ano = Integer.parseInt(this.jTextField7.getText());
+        
+        if (this.controlador.cadastraAluno(new EnvelopeAluno(cpf,rg,ano,mes,dia,telefone,endereco))) {
+            
+            JOptionPane.showConfirmDialog(this,"Aluno cadastrado com sucesso!");
+            
+            this.jTextField1.setText("");
+            this.jTextField2.setText("");
+            this.jTextField3.setText("");
+            this.jTextField4.setText("");
+            this.jTextField5.setText("");
+            this.jTextField6.setText("");
+            this.jTextField7.setText("");
+            
+        } else {
+            JOptionPane.showConfirmDialog(this,"Houve um erro ao cadastrar o Aluno. Por favor, entre em contato com o Administrador do seu Sistema.");
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -292,20 +316,21 @@ public class TelaAluno extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaAluno().setVisible(true);
+                new TelaFuncionario().setVisible(true);
             }
         });
     }
