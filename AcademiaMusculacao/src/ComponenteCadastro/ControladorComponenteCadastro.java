@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  *
  * @author joaov
  */
-public class ControladorComponenteCadastro {
+public class ControladorComponenteCadastro implements IComponenteCadastro {
     //Atributos:
     private static ControladorComponenteCadastro instancia;
     private String nomeArquivoDadosAlunos;
