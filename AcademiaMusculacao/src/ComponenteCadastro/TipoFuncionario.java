@@ -14,23 +14,24 @@ public enum TipoFuncionario {
     /**
      * Esse Funcionario tem controle geral sobre o sistema.
      */
-    ADMINISTRADOR(true),
+    ADMINISTRADOR(true, "Administrador"),
     
     /**
      * Atendentes podem ver dados sobre Alunos.
      */
-    ATENDENTE(false),
+    ATENDENTE(false, "Atendente"),
     
     /**
      * Limpeza não possui acoes sobre o sistema.
      */
-    LIMPEZA(false);
+    LIMPEZA(false, "Limpeza");
     
     //Atributos:
     /**
      * Indica se o tipo de funcionario em questao possui direitos administrativos para manusear o Sistema.
      */
     private final boolean poderAdministrativo;
+    private final String nomeTipo;
     
     //Construtor:
     /**
@@ -38,8 +39,9 @@ public enum TipoFuncionario {
      * 
      * @param ehAdministrador - true se pode manusear o sistema inteiro, false caso contrario.
      */
-    TipoFuncionario (boolean ehAdministrador) {
+    TipoFuncionario (boolean ehAdministrador, String nomeTipo) {
         this.poderAdministrativo = ehAdministrador;
+        this.nomeTipo = nomeTipo;
     }
     
     //Metodos:
@@ -51,5 +53,10 @@ public enum TipoFuncionario {
     public boolean ehAdministrador () {
         return this.poderAdministrativo;
     }
+    
+//    @Override
+//    public String toString () {
+//        return this.nomeTipo;
+//    }
 
 }
