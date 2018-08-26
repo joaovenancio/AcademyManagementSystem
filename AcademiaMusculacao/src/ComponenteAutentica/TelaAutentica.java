@@ -128,16 +128,29 @@ public class TelaAutentica extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String usuario = this.jTextField1.getText();
-        String senha = String.valueOf(this.jPasswordField2.getPassword());
-        
-        Funcionario funcionarioAutenticado = this.controlador.autentica(new EnvelopeAutenticacao(usuario,senha));
-        
-        if (funcionarioAutenticado == null) {
-            JOptionPane.showInternalMessageDialog(this, "Usuario ou Senha incorretos, tente novamente.");
+        if (this.controlador.getTentativa() <= this.controlador.getNumMaxTentativas()) {
+            //Recuperar os dados do envelope:
+            String usuario = this.jTextField1.getText();
+            String senha = String.valueOf(this.jPasswordField2.getPassword());
+            //Ver se os dados conferem com a base de dados:
+            Funcionario funcionarioAutenticado = this.controlador.autentica(new EnvelopeAutenticacao(usuario, senha));
+
+            if (funcionarioAutenticado == null) {//Se nao existir funcionario com essas credenciais:
+                JOptionPane.showInternalMessageDialog(this, "Usuario ou Senha incorretos, tente novamente."); //Jogar um JOptionPane informando
+                this.controlador.contabilzarErroNoLogin(); //Contabilizar uma tentativa de login
+            } else { //Caso exisitir, continuar o processamento do metodo do controlador iniciarAutenticacaoDeUsuario()
+                this.controlador.setFuncionarioAutenticado(funcionarioAutenticado);//Defino o funcionario de retorno pela Interface
+                this.controlador.setAutenticado(true); //Permite continuar o desenrolar do metodo concorrente
+                this.desligar();//A GUI se torna invisivel
+                return;
+            }
         } else {
-            
+            this.controlador.setFuncionarioAutenticado(null);//Defino que nao conseguiu efetuar login
+            this.controlador.setAutenticado(true); //Permite continuar o desenrolar do metodo concorrente iniciarAutenticacaoDeUsuario() do controlador dessa tela
+            this.desligar();//A GUI se torna invisivel
+            return;
         }
+
     }//GEN-LAST:event_jButton1ActionPerformed
     
     public void iniciar() {

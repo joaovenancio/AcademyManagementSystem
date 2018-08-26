@@ -5,12 +5,16 @@
  */
 package ComponenteAutentica;
 
+import ComponenteSalvaDados.ISalvaDados;
+
 /**
  *
  * @author joaov
  */
 public interface IAutentica {
     //Metodos:
+    public void setObjetoSalvaDados(ISalvaDados objetoSalvaDados);
+    
     public void setArquivoFuncionarios (String nomeDoAqruivo);
     
     public void setNumTentativas (int num);
