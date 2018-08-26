@@ -39,11 +39,12 @@ public class ControladorAutentica {
     }
     
     //Metodos:
-    public Funcionario iniciarAutenticacaoDeUsuario () throws RuntimeException {
+    public Funcionario iniciarAutenticacaoDeUsuario () throws RuntimeException, InterruptedException {
         this.autenticado = false; //Reinicializar o atributo
         this.iniciarTelaAutentica(); //Mostra a tela para input de dados. Vai ocorrer concorrentemente. O a tela vai chamar metodos do controlador para isso.
-        while (!autenticado) { //Parar a execucao desse metodo ateh que o usuario seja autenticado no sistema
+        while (!autenticado ) { //Parar a execucao desse metodo ateh que o usuario seja autenticado no sistema
             //Nada
+            Thread.sleep(0); //Fazer a tread perder a CPU
         }
         //Se for autenticado:
         this.tentativa = 0; //Reinicializar o numero de tentativa
