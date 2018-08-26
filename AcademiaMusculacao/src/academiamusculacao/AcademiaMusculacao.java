@@ -5,6 +5,7 @@
  */
 package academiamusculacao;
 
+import ComponenteAutentica.ControladorAutentica;
 import ComponenteCadastro.Aluno;
 import ComponenteCadastro.ControladorComponenteCadastro;
 import ComponenteCadastro.Funcionario;
@@ -36,10 +37,24 @@ public class AcademiaMusculacao {
         ISalvaDados salva = ControladorSalvaDados.getInstance();
         IComponenteCadastro cad = ControladorComponenteCadastro.getInstance();
         cad.setObjetoDePersistencia(salva);
-        cad.cadastrarFuncionario();
+//        cad.cadastrarFuncionario();
         HashMap<String,Funcionario> hash;
         hash = (HashMap<String, Funcionario>) salva.carregar("funcionarios.dso");
         System.out.println(hash.get("4").getTipo() +" " + hash.get("4").getUsuario());
+        
+        ControladorAutentica autentica = ControladorAutentica.getInstance();
+        autentica.setObjetoSalvaDados(salva);
+        autentica.iniciarTelaAutentica();
+        Funcionario func = autentica.iniciarAutenticacaoDeUsuario();
+        
+        System.out.println(func.getUsuario().toString());
+        
+        
+        if (func != null) {
+            System.out.println("Deu boa");
+            System.out.println(func.getUsuario().toString());
+        }
+        
         
     }
     

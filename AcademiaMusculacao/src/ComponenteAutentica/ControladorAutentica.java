@@ -6,6 +6,7 @@
 package ComponenteAutentica;
 
 import ComponenteCadastro.Funcionario;
+import ComponenteCadastro.TipoFuncionario;
 import ComponenteSalvaDados.ISalvaDados;
 import java.util.Collection;
 import java.util.HashMap;
@@ -63,15 +64,17 @@ public class ControladorAutentica {
     
     public Funcionario autentica (EnvelopeAutenticacao dados) {
         //Recuperar a lista de Funcionarios:
-        HashMap<String, Funcionario> funcionarios = (HashMap<String, Funcionario>) this.objetoSalvaDados.carregar(this.nomeArquivoFuncionario);
+        HashMap<String, Funcionario> funcionarios = new HashMap();
+        funcionarios = (HashMap<String, Funcionario>) this.objetoSalvaDados.carregar(this.nomeArquivoFuncionario);
         //Transformar ela em uma array para percorrer:
-        Collection colecaoFuncionarios = funcionarios.values();
-        Funcionario[] arrayFuncionarios = (Funcionario[]) colecaoFuncionarios.toArray();
+        Collection<Funcionario> colecaoFuncionarios = (Collection<Funcionario>) funcionarios.values();
+        Object[] arrayFuncionarios = colecaoFuncionarios.toArray();
         //Percorrer a array para achar o usuario correspondente:
-        for (Funcionario funcionario : arrayFuncionarios) {
-            if (funcionario.getUsuario().equals(dados.usuario)) {//Se achou o usuario
-                if (funcionario.getSenha().equals(dados.senha)) {//Verificar se a senha eh a certa
-                    return funcionario;
+        for (Object funcionario : arrayFuncionarios) {
+            Funcionario fun = (Funcionario) funcionario;
+            if (fun.getUsuario().equals(dados.usuario)) {//Se achou o usuario
+                if (fun.getSenha().equals(dados.senha)) {//Verificar se a senha eh a certa
+                    return fun;
                 } else {//Retorna nulo caso contrario:
                     return null;
                 }
