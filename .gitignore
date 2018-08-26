@@ -2,5 +2,6 @@ DSOII.vpp.*
 /AcademiaMusculacao/build/
 .DSOII.vpp.lck
 alunos.dso
+funcionarios.dso
 
 /AcademiaMusculacao/dist/
