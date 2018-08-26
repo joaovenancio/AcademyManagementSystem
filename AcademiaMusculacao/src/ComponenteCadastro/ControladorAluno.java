@@ -32,10 +32,10 @@ class ControladorAluno {
      * @return true se deu certo o cadastro - false se ocorreu um erro durante o cadastro.
      */
     public boolean cadastraAluno (EnvelopeAluno dadosAluno) {
-        HashMap<String, Object> alunos = new HashMap();
+        HashMap<String, Aluno> alunos = new HashMap();
         
         //Carrega os dados do sistema:
-        this.controladorComponente.getObjetoDePersistencia().carregar(alunos, this.carregarNomeArquivo());
+        alunos = (HashMap<String, Aluno>) this.controladorComponente.getObjetoDePersistencia().carregar(this.carregarNomeArquivo());
         //Cria o novo aluno:
         Aluno novoAluno = new Aluno(dadosAluno.cpf, dadosAluno.rg, dadosAluno.ano, dadosAluno.mes, dadosAluno.dia, dadosAluno.telefone, dadosAluno.endereco);
         alunos.put(novoAluno.getCpf(), novoAluno);

@@ -5,14 +5,16 @@
  */
 package ComponenteCadastro;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 /**
  *
  * @author joaov
  */
-public abstract class UsuarioAcademia {
+public abstract class UsuarioAcademia implements Serializable{
     //Atributos:
+    private static final long serialVersionUID = 1L;
     protected String cpf;
     protected String rg;
     protected Calendar dataNascimento;

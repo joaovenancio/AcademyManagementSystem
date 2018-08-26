@@ -15,6 +15,6 @@ public interface ISalvaDados {
     //Metodos:
     public boolean persistir (Object dado, String nomeDoArquivo);
     
-    public void carregar (Object dadoCarregar, String nomeDoArquivo);
+    public Object carregar (String nomeDoArquivo);
     
 }

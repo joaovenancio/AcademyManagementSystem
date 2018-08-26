@@ -33,10 +33,10 @@ public class ControladorFuncionario {
      */
     public boolean cadastrarFuncionario (EnvelopeFuncionario dadoFuncionario) {
         //Recuperar os dados dos funcionarios:
-         HashMap<String, Object> funcionarios = new HashMap(); //Criar novo objeto para passar por referência
+         HashMap<String, Funcionario> funcionarios = new HashMap(); //Criar novo objeto para passar por referência
        
         //Carrega os dados do sistema:
-        this.controladorComponente.getObjetoDePersistencia().carregar(funcionarios, this.carregarNomeArquivo());
+        funcionarios = (HashMap<String, Funcionario>) this.controladorComponente.getObjetoDePersistencia().carregar( this.carregarNomeArquivo());
         //Cria o novo funcionario:
         Funcionario novoFuncionario = new Funcionario (dadoFuncionario.cpf, dadoFuncionario.rg, dadoFuncionario.ano,
                 dadoFuncionario.mes, dadoFuncionario.dia, dadoFuncionario.telefone, dadoFuncionario.endereco, dadoFuncionario.tipo);

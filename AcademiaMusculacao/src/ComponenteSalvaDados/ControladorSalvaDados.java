@@ -79,7 +79,7 @@ public class ControladorSalvaDados implements ISalvaDados {
      * @param nomeDoArquivo - Nome do Arquivo para ser carregado o objeto.
      */
     @Override
-    public void carregar (Object dadoCarregar, String nomeDoArquivo) {
+    public Object carregar (String nomeDoArquivo) {
         try {
             //Criar um objeto para passar como referencia o nome do Arquivo desejado
             FileInputStream caminhoArquivo = new FileInputStream(nomeDoArquivo);
@@ -87,7 +87,7 @@ public class ControladorSalvaDados implements ISalvaDados {
             ObjectInputStream fluxoEntradaObjeto = new ObjectInputStream(caminhoArquivo);
             
             //Recuperar o Objeto:
-            dadoCarregar =  fluxoEntradaObjeto.readObject();
+            Object dadoCarregar =  fluxoEntradaObjeto.readObject();
             
             //Fehcar o canal de recebimento e liberar o arquivo:
             fluxoEntradaObjeto.close();
@@ -97,6 +97,8 @@ public class ControladorSalvaDados implements ISalvaDados {
             fluxoEntradaObjeto = null;
             caminhoArquivo = null;
             
+            return dadoCarregar;
+            
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
         } catch (IOException ex) {
@@ -105,6 +107,7 @@ public class ControladorSalvaDados implements ISalvaDados {
             System.out.println(ex);
         }
         
+        return null;
     }
     
     
