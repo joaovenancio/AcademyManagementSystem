@@ -323,7 +323,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
         
         if (this.controlador.cadastrarFuncionario(new EnvelopeFuncionario(cpf,rg,ano,mes,dia,telefone,endereco,tipo,usuario,senha))) {
             
-            JOptionPane.showInternalMessageDialog(this,"Funcionario cadastrado com sucesso!");
+            JOptionPane.showConfirmDialog(null,"Funcionario cadastrado com sucesso!");
             
             this.jTextField1.setText("");
             this.jTextField2.setText("");
@@ -337,7 +337,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
             this.jPasswordField1.setText("");
             
         } else {
-            JOptionPane.showInternalMessageDialog(this,"Houve um erro ao cadastrar o Funcionario. Por favor, entre em contato com o Administrador do seu Sistema.");
+            JOptionPane.showConfirmDialog(null,"Houve um erro ao cadastrar o Funcionario. Por favor, entre em contato com o Administrador do seu Sistema.");
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
