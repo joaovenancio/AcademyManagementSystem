@@ -39,7 +39,8 @@ public class ControladorFuncionario {
         funcionarios = (HashMap<String, Funcionario>) this.controladorComponente.getObjetoDePersistencia().carregar( this.carregarNomeArquivo());
         //Cria o novo funcionario:
         Funcionario novoFuncionario = new Funcionario (dadoFuncionario.cpf, dadoFuncionario.rg, dadoFuncionario.ano,
-                dadoFuncionario.mes, dadoFuncionario.dia, dadoFuncionario.telefone, dadoFuncionario.endereco, dadoFuncionario.tipo);
+                dadoFuncionario.mes, dadoFuncionario.dia, dadoFuncionario.telefone, dadoFuncionario.endereco, dadoFuncionario.tipo,
+                dadoFuncionario.usuario, dadoFuncionario.senha);
         funcionarios.put(novoFuncionario.getCpf(), novoFuncionario);
         //Persiste os dados:
         return this.controladorComponente.getObjetoDePersistencia().persistir(funcionarios, this.carregarNomeArquivo());

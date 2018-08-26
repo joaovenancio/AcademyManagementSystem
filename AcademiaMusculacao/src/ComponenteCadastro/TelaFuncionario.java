@@ -62,6 +62,10 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -200,7 +204,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
             }
         });
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Tipo de Funcionario"));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Tipo de Funcionario e Credenciais"));
 
         jComboBox1.setModel(criarNovoModeloComboBox());
         jComboBox1.setSelectedIndex(0);
@@ -210,20 +214,40 @@ public class TelaFuncionario extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setText("Usuário:");
+
+        jLabel10.setText("Senha:");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(217, 217, 217)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jPasswordField1, jTextField8});
+
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -294,10 +318,12 @@ public class TelaFuncionario extends javax.swing.JFrame {
         int mes = Integer.parseInt(this.jTextField6.getText());
         int ano = Integer.parseInt(this.jTextField7.getText());
         TipoFuncionario tipo = (TipoFuncionario) this.jComboBox1.getSelectedItem();
+        String usuario = this.jTextField8.getText();
+        String senha = String.valueOf(this.jPasswordField1.getPassword());
         
-        if (this.controlador.cadastrarFuncionario(new EnvelopeFuncionario(cpf,rg,ano,mes,dia,telefone,endereco,tipo))) {
+        if (this.controlador.cadastrarFuncionario(new EnvelopeFuncionario(cpf,rg,ano,mes,dia,telefone,endereco,tipo,usuario,senha))) {
             
-            JOptionPane.showConfirmDialog(this,"Funcionario cadastrado com sucesso!");
+            JOptionPane.showInternalMessageDialog(this,"Funcionario cadastrado com sucesso!");
             
             this.jTextField1.setText("");
             this.jTextField2.setText("");
@@ -307,9 +333,11 @@ public class TelaFuncionario extends javax.swing.JFrame {
             this.jTextField6.setText("");
             this.jTextField7.setText("");
             this.jComboBox1.setSelectedIndex(0);
+            this.jTextField8.setText("");
+            this.jPasswordField1.setText("");
             
         } else {
-            JOptionPane.showConfirmDialog(this,"Houve um erro ao cadastrar o Funcionario. Por favor, entre em contato com o Administrador do seu Sistema.");
+            JOptionPane.showInternalMessageDialog(this,"Houve um erro ao cadastrar o Funcionario. Por favor, entre em contato com o Administrador do seu Sistema.");
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -394,6 +422,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -401,9 +430,11 @@ public class TelaFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -411,5 +442,6 @@ public class TelaFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 }

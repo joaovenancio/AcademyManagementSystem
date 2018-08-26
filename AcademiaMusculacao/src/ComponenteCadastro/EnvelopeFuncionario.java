@@ -19,9 +19,11 @@ class EnvelopeFuncionario {
     public String telefone;
     public String endereco;
     public TipoFuncionario tipo;
+    public String usuario;
+    public String senha;
     
     //Construtor:
-    public EnvelopeFuncionario(String cpf, String rg, int dia, int mes, int ano, String telefone, String endereco, TipoFuncionario tipo) {
+    public EnvelopeFuncionario(String cpf, String rg, int dia, int mes, int ano, String telefone, String endereco, TipoFuncionario tipo, String usuario, String senha) {
         this.cpf = cpf;
         this.rg = rg;
         this.dia = dia;
@@ -30,6 +32,8 @@ class EnvelopeFuncionario {
         this.telefone = telefone;
         this.endereco = endereco;
         this.tipo = tipo;
+        this.usuario = usuario;
+        this.senha = senha;
     }
     
 }
