@@ -12,6 +12,7 @@ import ComponenteCadastro.Funcionario;
 import ComponenteCadastro.IComponenteCadastro;
 import ComponenteSalvaDados.ControladorSalvaDados;
 import ComponenteSalvaDados.ISalvaDados;
+import academiamusculacao.controller.ControladorGeral;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -25,7 +26,7 @@ public class AcademiaMusculacao {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, RuntimeException, InterruptedException {
 //        ISalvaDados salva = ControladorSalvaDados.getInstance();
 //        IComponenteCadastro cad = ControladorComponenteCadastro.getInstance();
 //        cad.setObjetoDePersistencia(salva);
@@ -55,6 +56,8 @@ public class AcademiaMusculacao {
             System.out.println(func.getUsuario().toString());
         }
         
+        ControladorGeral cont = ControladorGeral.getInstance();
+        cont.getTelaAtendente().iniciar(func.getUsuario(), func.getTipo().toString());
         
     }
     
