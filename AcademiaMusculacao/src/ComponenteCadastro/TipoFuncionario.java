@@ -24,7 +24,12 @@ public enum TipoFuncionario {
     /**
      * Limpeza não possui acoes sobre o sistema.
      */
-    LIMPEZA(false, "Limpeza");
+    LIMPEZA(false, "Limpeza"),
+    
+    /**
+     * Professor podem criar Treinos e associar eles aos Alunos.
+     */
+    PROFESSOR(false, "Professor");
     
     //Atributos:
     /**
