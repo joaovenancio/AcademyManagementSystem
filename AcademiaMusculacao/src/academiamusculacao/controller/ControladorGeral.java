@@ -14,6 +14,7 @@ import ComponenteSalvaDados.*;
 import academiamusculacao.view.TelaAdministrador;
 import academiamusculacao.view.TelaAtendente;
 import academiamusculacao.view.TelaProfessor;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -60,7 +61,17 @@ public class ControladorGeral {
         
         switch (funcionarioAutenticado.getTipo()){
             case ADMINISTRADOR:
-                this.TelaAdministrador.iniciar();
+                this.telaAdministrador.iniciar(funcionarioAutenticado.getUsuario(), funcionarioAutenticado.getTipo().toString());
+                break;
+            case PROFESSOR:
+                this.telaProfessor.iniciar(funcionarioAutenticado.getUsuario(), funcionarioAutenticado.getTipo().toString());
+                break;
+            case ATENDENTE:
+                this.telaAtendente.iniciar(funcionarioAutenticado.getUsuario(), funcionarioAutenticado.getTipo().toString());
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Esse tipo de Funcionario não tem acesso ao clinete: Desligando a aplicação...");
+                System.exit(0);
         }
         
     }
