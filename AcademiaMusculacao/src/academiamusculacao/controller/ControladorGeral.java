@@ -39,6 +39,7 @@ public class ControladorGeral {
         this.componenteCadastro = ControladorComponenteCadastro.getInstance();
         this.configurarComponenteCadastro();
         this.componenteAutentica = ControladorAutentica.getInstance();
+        this.configurarComponenteAutentica ();
     }
     
     //Metodos:
@@ -56,9 +57,23 @@ public class ControladorGeral {
         
     }
     
+    /**
+     * Metodo central do sistema. Ele inicia as telas para cada tipo de usuario no sistema.
+     * 
+     * @throws RuntimeException - Se por acaso o metodo do componente de autenticacao jogar uma exeção por exceder os numeros de tentaivas.
+     * @throws InterruptedException 
+     */
     public void autenticarUsuarioNoSistema () throws RuntimeException, InterruptedException {
-        Funcionario funcionarioAutenticado = this.componenteAutentica.iniciarAutenticacaoDeUsuario();
-        
+        //Apontador:
+        Funcionario funcionarioAutenticado = null;
+        //Fazer o login no sistema:
+        try {
+            funcionarioAutenticado = this.componenteAutentica.iniciarAutenticacaoDeUsuario();
+        } catch (RuntimeException ex) {
+            JOptionPane.showMessageDialog(null, "Excedeu o numero máximo de tentativas.");
+            System.exit(0);
+        }
+        //Ligar a tela para esse usuario:
         switch (funcionarioAutenticado.getTipo()){
             case ADMINISTRADOR:
                 this.telaAdministrador.iniciar(funcionarioAutenticado.getUsuario(), funcionarioAutenticado.getTipo().toString());
@@ -96,6 +111,12 @@ public class ControladorGeral {
 
     public void cadastrarFuncionario() {
         this.componenteCadastro.cadastrarFuncionario();
+    }
+    
+    public void configurarComponenteAutentica () {
+        this.componenteAutentica.setArquivoFuncionarios("funcionarios.dso");
+        this.componenteAutentica.setObjetoSalvaDados(this.componenteSalvaDados);
+        this.componenteAutentica.setNumTentativas(3);
     }
     
     

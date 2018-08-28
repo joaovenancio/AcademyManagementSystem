@@ -35,29 +35,33 @@ public class AcademiaMusculacao {
 //        hash = (HashMap<String, Aluno>) salva.carregar("alunos.dso");
 //        System.out.println(hash.get("2").getEndereco());
         
-        ISalvaDados salva = ControladorSalvaDados.getInstance();
-        IComponenteCadastro cad = ControladorComponenteCadastro.getInstance();
-        cad.setObjetoDePersistencia(salva);
-        cad.cadastrarFuncionario();
-        HashMap<String,Funcionario> hash;
-        hash = (HashMap<String, Funcionario>) salva.carregar("funcionarios.dso");
-        System.out.println(hash.get("2").getTipo() +" " + hash.get("2").getUsuario());
-        
-        ControladorAutentica autentica = ControladorAutentica.getInstance();
-        autentica.setObjetoSalvaDados(salva);
-        autentica.iniciarTelaAutentica();
-        Funcionario func = autentica.iniciarAutenticacaoDeUsuario();
-        
-        System.out.println(func.getUsuario().toString());
-        
-        
-        if (func != null) {
-            System.out.println("Deu boa");
-            System.out.println(func.getUsuario().toString());
-        }
+//        ISalvaDados salva = ControladorSalvaDados.getInstance();
+//        IComponenteCadastro cad = ControladorComponenteCadastro.getInstance();
+//        cad.setObjetoDePersistencia(salva);
+//        cad.cadastrarFuncionario();
+//        HashMap<String,Funcionario> hash;
+//        hash = (HashMap<String, Funcionario>) salva.carregar("funcionarios.dso");
+//        System.out.println(hash.get("2").getTipo() +" " + hash.get("2").getUsuario());
+//        
+//        ControladorAutentica autentica = ControladorAutentica.getInstance();
+//        autentica.setObjetoSalvaDados(salva);
+//        autentica.iniciarTelaAutentica();
+//        Funcionario func = autentica.iniciarAutenticacaoDeUsuario();
+//        
+//        System.out.println(func.getUsuario().toString());
+//        
+//        
+//        if (func != null) {
+//            System.out.println("Deu boa");
+//            System.out.println(func.getUsuario().toString());
+//        }
+//        
+//        ControladorGeral cont = ControladorGeral.getInstance();
+//        cont.getTelaAtendente().iniciar(func.getUsuario(), func.getTipo().toString());
         
         ControladorGeral cont = ControladorGeral.getInstance();
-        cont.getTelaAtendente().iniciar(func.getUsuario(), func.getTipo().toString());
+        cont.autenticarUsuarioNoSistema();
+        
         
     }
     
