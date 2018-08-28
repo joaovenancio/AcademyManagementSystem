@@ -15,7 +15,7 @@ import java.util.HashMap;
  *
  * @author joaov
  */
-public class ControladorAutentica {
+public class ControladorAutentica implements IAutentica {
     //Atributos:
     private static ControladorAutentica instancia;
     private String nomeArquivoFuncionario;
@@ -39,6 +39,7 @@ public class ControladorAutentica {
     }
     
     //Metodos:
+    @Override
     public Funcionario iniciarAutenticacaoDeUsuario () throws RuntimeException, InterruptedException {
         this.autenticado = false; //Reinicializar o atributo
         this.iniciarTelaAutentica(); //Mostra a tela para input de dados. Vai ocorrer concorrentemente. O a tela vai chamar metodos do controlador para isso.
@@ -108,6 +109,7 @@ public class ControladorAutentica {
         
     }
 
+    @Override
     public void setObjetoSalvaDados(ISalvaDados objetoSalvaDados) {
         this.objetoSalvaDados = objetoSalvaDados;
     }
@@ -122,6 +124,16 @@ public class ControladorAutentica {
 
     public int getTentativa() {
         return tentativa;
+    }
+
+    @Override
+    public void setArquivoFuncionarios(String nomeDoArquivo) {
+        this.nomeArquivoFuncionario = nomeDoArquivo;
+    }
+
+    @Override
+    public void setNumTentativas(int num) {
+        this.numMaxTentativas = num;
     }
     
     

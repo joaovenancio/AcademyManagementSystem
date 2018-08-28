@@ -5,10 +5,15 @@
  */
 package academiamusculacao.controller;
 
+import ComponenteAutentica.ControladorAutentica;
+import ComponenteAutentica.IAutentica;
 import ComponenteCadastro.ControladorComponenteCadastro;
+import ComponenteCadastro.Funcionario;
 import ComponenteCadastro.IComponenteCadastro;
 import ComponenteSalvaDados.*;
+import academiamusculacao.view.TelaAdministrador;
 import academiamusculacao.view.TelaAtendente;
+import academiamusculacao.view.TelaProfessor;
 
 /**
  *
@@ -18,15 +23,21 @@ public class ControladorGeral {
     //Atributos:
     private static ControladorGeral instancia;
     private TelaAtendente telaAtendente;
+    private TelaAdministrador telaAdministrador;
+    private TelaProfessor telaProfessor;
     private ISalvaDados componenteSalvaDados;
     private IComponenteCadastro componenteCadastro;
+    private IAutentica componenteAutentica;
     
     //Construtor:
     private ControladorGeral () {
         this.telaAtendente = new TelaAtendente(this);
+        this.telaAdministrador = new TelaAdministrador(this);
+        this.telaProfessor = new TelaProfessor(this);
         this.componenteSalvaDados = ControladorSalvaDados.getInstance();
         this.componenteCadastro = ControladorComponenteCadastro.getInstance();
         this.configurarComponenteCadastro();
+        this.componenteAutentica = ControladorAutentica.getInstance();
     }
     
     //Metodos:
@@ -41,6 +52,16 @@ public class ControladorGeral {
         }
         
         return ControladorGeral.instancia;
+        
+    }
+    
+    public void autenticarUsuarioNoSistema () throws RuntimeException, InterruptedException {
+        Funcionario funcionarioAutenticado = this.componenteAutentica.iniciarAutenticacaoDeUsuario();
+        
+        switch (funcionarioAutenticado.getTipo()){
+            case ADMINISTRADOR:
+                this.TelaAdministrador.iniciar();
+        }
         
     }
 

@@ -5,6 +5,7 @@
  */
 package ComponenteAutentica;
 
+import ComponenteCadastro.Funcionario;
 import ComponenteSalvaDados.ISalvaDados;
 
 /**
@@ -15,9 +16,9 @@ public interface IAutentica {
     //Metodos:
     public void setObjetoSalvaDados(ISalvaDados objetoSalvaDados);
     
-    public void setArquivoFuncionarios (String nomeDoAqruivo);
+    public void setArquivoFuncionarios (String nomeDoArquivo);
     
     public void setNumTentativas (int num);
     
-    public boolean autenticar();
+    public Funcionario iniciarAutenticacaoDeUsuario() throws RuntimeException, InterruptedException;
 }

@@ -38,10 +38,10 @@ public class AcademiaMusculacao {
         ISalvaDados salva = ControladorSalvaDados.getInstance();
         IComponenteCadastro cad = ControladorComponenteCadastro.getInstance();
         cad.setObjetoDePersistencia(salva);
-//        cad.cadastrarFuncionario();
+        cad.cadastrarFuncionario();
         HashMap<String,Funcionario> hash;
         hash = (HashMap<String, Funcionario>) salva.carregar("funcionarios.dso");
-        System.out.println(hash.get("4").getTipo() +" " + hash.get("4").getUsuario());
+        System.out.println(hash.get("2").getTipo() +" " + hash.get("2").getUsuario());
         
         ControladorAutentica autentica = ControladorAutentica.getInstance();
         autentica.setObjetoSalvaDados(salva);
