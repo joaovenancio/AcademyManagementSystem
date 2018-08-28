@@ -10,6 +10,8 @@ import ComponenteCadastro.Aluno;
 import ComponenteCadastro.ControladorComponenteCadastro;
 import ComponenteCadastro.Funcionario;
 import ComponenteCadastro.IComponenteCadastro;
+import ComponenteListagem.ControladorComponenteListagem;
+import ComponenteListagem.IComponenteListagem;
 import ComponenteSalvaDados.ControladorSalvaDados;
 import ComponenteSalvaDados.ISalvaDados;
 import academiamusculacao.controller.ControladorGeral;
@@ -27,7 +29,7 @@ public class AcademiaMusculacao {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException, RuntimeException, InterruptedException {
-//        ISalvaDados salva = ControladorSalvaDados.getInstance();
+        ISalvaDados salva = ControladorSalvaDados.getInstance();
 //        IComponenteCadastro cad = ControladorComponenteCadastro.getInstance();
 //        cad.setObjetoDePersistencia(salva);
 //        cad.cadastrarAluno();
@@ -59,8 +61,12 @@ public class AcademiaMusculacao {
 //        ControladorGeral cont = ControladorGeral.getInstance();
 //        cont.getTelaAtendente().iniciar(func.getUsuario(), func.getTipo().toString());
         
-        ControladorGeral cont = ControladorGeral.getInstance();
-        cont.autenticarUsuarioNoSistema();
+        //ControladorGeral cont = ControladorGeral.getInstance();
+        //cont.autenticarUsuarioNoSistema();
+        
+        IComponenteListagem lista = ControladorComponenteListagem.getInstance();
+        lista.setObjetoDePersistencia(salva);
+        lista.listarAlunos();
         
         
     }

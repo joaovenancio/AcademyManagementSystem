@@ -5,7 +5,10 @@
  */
 package ComponenteListagem;
 
+import ComponenteCadastro.Aluno;
 import ComponenteSalvaDados.ISalvaDados;
+import java.util.Collection;
+import java.util.HashMap;
 
 /**
  *
@@ -17,7 +20,7 @@ public class ControladorComponenteListagem implements IComponenteListagem {
     private ISalvaDados objetoDePersistenciaDeDados;
     private String nomeArquivoAlunos;
     private String nomeArquivoFuncionarios;
-    
+    private TelaListagemAlunos telaListagemAlunos;
     
     //Construtor:
     private ControladorComponenteListagem () {
@@ -25,10 +28,11 @@ public class ControladorComponenteListagem implements IComponenteListagem {
         this.objetoDePersistenciaDeDados = null;
         this.nomeArquivoAlunos = "alunos.dso";
         this.nomeArquivoFuncionarios = "funcionarios.dso";
+        this.telaListagemAlunos = new TelaListagemAlunos(this);
     }
     
     //Metodos:
-    public ControladorComponenteListagem getInstance() {
+    public static ControladorComponenteListagem getInstance() {
         if (ControladorComponenteListagem.instancia == null) {
             ControladorComponenteListagem.instancia = new ControladorComponenteListagem();
         }
@@ -39,7 +43,10 @@ public class ControladorComponenteListagem implements IComponenteListagem {
 
     @Override
     public void listarAlunos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        HashMap<String,Aluno> alunos = (HashMap<String,Aluno>) this.objetoDePersistenciaDeDados.carregar(this.nomeArquivoAlunos);
+        Collection<Aluno> colecaoAlunos = (Collection<Aluno>) alunos.values();
+        Object[] arrayAlunos = colecaoAlunos.toArray();
+        this.telaListagemAlunos.iniciar(arrayAlunos);
     }
 
     @Override
