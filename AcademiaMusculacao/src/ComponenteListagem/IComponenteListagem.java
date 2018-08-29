@@ -21,7 +21,7 @@ public interface IComponenteListagem {
     /**
      * Lista todos os alunos contidos em um HashMap<String,Funcionario> do arquivo de Funcionarios (usar o metodo setNomeArquivoFuncionarios para definir).
      */
-    public void listaFuncionarios();
+    public void listarFuncionarios();
     
     //Metodos de configuracao do componente:
     /**

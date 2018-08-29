@@ -61,12 +61,12 @@ public class AcademiaMusculacao {
 //        ControladorGeral cont = ControladorGeral.getInstance();
 //        cont.getTelaAtendente().iniciar(func.getUsuario(), func.getTipo().toString());
         
-        //ControladorGeral cont = ControladorGeral.getInstance();
-        //cont.autenticarUsuarioNoSistema();
+        ControladorGeral cont = ControladorGeral.getInstance();
+        cont.autenticarUsuarioNoSistema();
         
         IComponenteListagem lista = ControladorComponenteListagem.getInstance();
         lista.setObjetoDePersistencia(salva);
-        lista.listarAlunos();
+        lista.listarFuncionarios();
         
         
     }

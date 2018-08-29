@@ -6,6 +6,7 @@
 package ComponenteListagem;
 
 import ComponenteCadastro.Aluno;
+import ComponenteCadastro.Funcionario;
 import ComponenteSalvaDados.ISalvaDados;
 import java.util.Collection;
 import java.util.HashMap;
@@ -21,6 +22,7 @@ public class ControladorComponenteListagem implements IComponenteListagem {
     private String nomeArquivoAlunos;
     private String nomeArquivoFuncionarios;
     private TelaListagemAlunos telaListagemAlunos;
+    private TelaListagemFuncionarios telaListagemFuncionarios;
     
     //Construtor:
     private ControladorComponenteListagem () {
@@ -29,6 +31,7 @@ public class ControladorComponenteListagem implements IComponenteListagem {
         this.nomeArquivoAlunos = "alunos.dso";
         this.nomeArquivoFuncionarios = "funcionarios.dso";
         this.telaListagemAlunos = new TelaListagemAlunos(this);
+        this.telaListagemFuncionarios = new TelaListagemFuncionarios(this);
     }
     
     //Metodos:
@@ -50,8 +53,11 @@ public class ControladorComponenteListagem implements IComponenteListagem {
     }
 
     @Override
-    public void listaFuncionarios() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void listarFuncionarios() {
+        HashMap<String,Funcionario> funcionarios = (HashMap<String,Funcionario>) this.objetoDePersistenciaDeDados.carregar(this.nomeArquivoFuncionarios);
+        Collection<Funcionario> colecaoFuncionarios = funcionarios.values();
+        Object[] arrayFuncionarios = colecaoFuncionarios.toArray();
+        this.telaListagemFuncionarios.iniciar(arrayFuncionarios);
     }
 
     @Override
