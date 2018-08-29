@@ -11,6 +11,7 @@ package ComponenteCadastro;
  */
 class EnvelopeFuncionario {
     //Atributos:
+    public String nome;
     public String cpf;
     public String rg;
     public int dia;
@@ -23,7 +24,8 @@ class EnvelopeFuncionario {
     public String senha;
     
     //Construtor:
-    public EnvelopeFuncionario(String cpf, String rg, int dia, int mes, int ano, String telefone, String endereco, TipoFuncionario tipo, String usuario, String senha) {
+    public EnvelopeFuncionario(String nome, String cpf, String rg, int dia, int mes, int ano, String telefone, String endereco, TipoFuncionario tipo, String usuario, String senha) {
+        this.nome = nome;
         this.cpf = cpf;
         this.rg = rg;
         this.dia = dia;

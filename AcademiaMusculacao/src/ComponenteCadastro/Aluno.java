@@ -18,8 +18,8 @@ public class Aluno extends UsuarioAcademia {
     
     
     //Construtor:
-    public Aluno(String cpf, String rg, int ano, int mes, int dia, String telefone, String endereco) {
-        super(cpf, rg, ano, mes, dia, telefone, endereco);
+    public Aluno(String nome, String cpf, String rg, int ano, int mes, int dia, String telefone, String endereco) {
+        super(nome, cpf, rg, ano, mes, dia, telefone, endereco);
         this.treino = new ArrayList<Treino>();
     }
     

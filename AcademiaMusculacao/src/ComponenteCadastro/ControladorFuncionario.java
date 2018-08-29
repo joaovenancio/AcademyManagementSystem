@@ -42,7 +42,7 @@ public class ControladorFuncionario {
             funcionarios = new HashMap<String,Funcionario>();
         }
         //Cria o novo funcionario:
-        Funcionario novoFuncionario = new Funcionario (dadoFuncionario.cpf, dadoFuncionario.rg, dadoFuncionario.ano,
+        Funcionario novoFuncionario = new Funcionario (dadoFuncionario.nome, dadoFuncionario.cpf, dadoFuncionario.rg, dadoFuncionario.ano,
                 dadoFuncionario.mes, dadoFuncionario.dia, dadoFuncionario.telefone, dadoFuncionario.endereco, dadoFuncionario.tipo,
                 dadoFuncionario.usuario, dadoFuncionario.senha);
         funcionarios.put(novoFuncionario.getCpf(), novoFuncionario);

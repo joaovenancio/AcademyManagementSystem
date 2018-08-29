@@ -12,6 +12,7 @@ package ComponenteCadastro;
  */
 class EnvelopeAluno {
     //Atributos:
+    public String nome;
     public String cpf;
     public String rg;
     public int ano;
@@ -21,7 +22,8 @@ class EnvelopeAluno {
     public String endereco;
     
     //Construtor:
-    public EnvelopeAluno(String cpf, String rg, int ano, int mes, int dia, String telefone, String endereco) {
+    public EnvelopeAluno(String nome, String cpf, String rg, int ano, int mes, int dia, String telefone, String endereco) {
+        this.nome = nome;
         this.cpf = cpf;
         this.rg = rg;
         this.ano = ano;

@@ -16,8 +16,8 @@ public class Funcionario extends UsuarioAcademia {
     protected String senha;
     
     //Construtor:
-    public Funcionario(String cpf, String rg, int ano, int mes, int dia, String telefone, String endereco, TipoFuncionario tipo, String usuario, String senha) {
-        super(cpf, rg, ano, mes, dia, telefone, endereco);
+    public Funcionario(String nome, String cpf, String rg, int ano, int mes, int dia, String telefone, String endereco, TipoFuncionario tipo, String usuario, String senha) {
+        super(nome, cpf, rg, ano, mes, dia, telefone, endereco);
         this.tipo = tipo;
         this.usuario = usuario;
         this.senha = senha;

@@ -41,7 +41,7 @@ class ControladorAluno {
             alunos = new HashMap<String,Aluno>();
         }
         //Cria o novo aluno:
-        Aluno novoAluno = new Aluno(dadosAluno.cpf, dadosAluno.rg, dadosAluno.ano, dadosAluno.mes, dadosAluno.dia, dadosAluno.telefone, dadosAluno.endereco);
+        Aluno novoAluno = new Aluno(dadosAluno.nome, dadosAluno.cpf, dadosAluno.rg, dadosAluno.ano, dadosAluno.mes, dadosAluno.dia, dadosAluno.telefone, dadosAluno.endereco);
         alunos.put(novoAluno.getCpf(), novoAluno);
         //Persiste os dados:
         return this.controladorComponente.getObjetoDePersistencia().persistir(alunos, this.carregarNomeArquivo());

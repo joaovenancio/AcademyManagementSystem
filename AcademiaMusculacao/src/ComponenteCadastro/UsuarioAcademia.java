@@ -15,6 +15,7 @@ import java.util.Calendar;
 public abstract class UsuarioAcademia implements Serializable{
     //Atributos:
     private static final long serialVersionUID = 1L;
+    protected String nome;
     protected String cpf;
     protected String rg;
     protected Calendar dataNascimento;
@@ -22,7 +23,8 @@ public abstract class UsuarioAcademia implements Serializable{
     protected String endereco;
     
     //Construtor:
-    public UsuarioAcademia(String cpf, String rg,int ano, int mes, int dia, String telefone, String endereco) {
+    public UsuarioAcademia(String nome, String cpf, String rg,int ano, int mes, int dia, String telefone, String endereco) {
+        this.nome = nome;
         this.cpf = cpf;
         this.rg = rg;
         this.dataNascimento = Calendar.getInstance();
@@ -72,6 +74,11 @@ public abstract class UsuarioAcademia implements Serializable{
     public void setDataNascimento(int ano, int mes, int dia) {
         this.dataNascimento.clear();
         this.dataNascimento.set(ano, mes, dia);
+    }
+    
+    @Override
+    public String toString() {
+        return this.nome;
     }
     
     
