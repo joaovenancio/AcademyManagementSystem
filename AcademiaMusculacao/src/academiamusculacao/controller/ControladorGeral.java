@@ -10,6 +10,8 @@ import ComponenteAutentica.IAutentica;
 import ComponenteCadastro.ControladorComponenteCadastro;
 import ComponenteCadastro.Funcionario;
 import ComponenteCadastro.IComponenteCadastro;
+import ComponenteListagem.ControladorComponenteListagem;
+import ComponenteListagem.IComponenteListagem;
 import ComponenteSalvaDados.*;
 import academiamusculacao.view.TelaAdministrador;
 import academiamusculacao.view.TelaAtendente;
@@ -29,6 +31,7 @@ public class ControladorGeral {
     private ISalvaDados componenteSalvaDados;
     private IComponenteCadastro componenteCadastro;
     private IAutentica componenteAutentica;
+    private IComponenteListagem componeneListagem;
     
     //Construtor:
     private ControladorGeral () {
@@ -40,6 +43,8 @@ public class ControladorGeral {
         this.configurarComponenteCadastro();
         this.componenteAutentica = ControladorAutentica.getInstance();
         this.configurarComponenteAutentica ();
+        this.componeneListagem = ControladorComponenteListagem.getInstance();
+        this.configurarComponenteListagem();
     }
     
     //Metodos:
@@ -113,10 +118,24 @@ public class ControladorGeral {
         this.componenteCadastro.cadastrarFuncionario();
     }
     
+    public void listarAlunos() {
+        this.componeneListagem.listarAlunos();
+    }
+    
+    public void listarFunionarios(){
+        this.componeneListagem.listarFuncionarios();
+    }
+    
     public void configurarComponenteAutentica () {
         this.componenteAutentica.setArquivoFuncionarios("funcionarios.dso");
         this.componenteAutentica.setObjetoSalvaDados(this.componenteSalvaDados);
         this.componenteAutentica.setNumTentativas(3);
+    }
+
+    private void configurarComponenteListagem() {
+        this.componeneListagem.setNomeArquivoAlunos("alunos.dso");
+        this.componeneListagem.setNomeArquivoFuncionarios("funcionarios.dso");
+        this.componeneListagem.setObjetoDePersistencia(this.componenteSalvaDados);
     }
     
     
